@@ -25,7 +25,7 @@ namespace FlightSimulator
         public MainWindow()
         {
             InitializeComponent();
-            //   vm = new SimulatorViewModel(new SimulatorModel(new MyTelnetClient()));
+            // vm = new SimulatorViewModel(new SimulatorModel(new MyTelnetClient()));
             // DataContext = vm;
             client = new MyTelnetClient();
             client.Connect("127.0.0.1", 8080);
