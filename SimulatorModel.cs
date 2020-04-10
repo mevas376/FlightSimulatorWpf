@@ -37,7 +37,8 @@ namespace FlightSimulator
         }
 
         private double elevator;
-        public double Elevator {
+        public double Elevator
+        {
             get { return this.elevator; }
             set
             {
@@ -50,7 +51,8 @@ namespace FlightSimulator
         }
 
         private double aileron;
-        public double Aileron {
+        public double Aileron
+        {
             get { return this.aileron; }
             set
             {
@@ -76,135 +78,155 @@ namespace FlightSimulator
             }
         }
 
-        private double indicated_heading_deg;
-        public double Indicated_Heading_Deg
+        private double heading;
+        public double Heading
         {
-            get { return this.indicated_heading_deg; }
+            get { return this.heading; }
             set
             {
-                if (this.indicated_heading_deg != value)
+                if (this.heading != value)
                 {
-                    this.indicated_heading_deg = value;
-                    this.NotifyPropertyChanged("Indicated_Heading_Deg");
+                    this.heading = value;
+                    this.NotifyPropertyChanged("Heading");
                 }
             }
         }
-        private double gps_indicated_vertical_speed;
-        public double Gps_Indicated_Vertical_Speed {
-            get { return this.gps_indicated_vertical_speed; }
-            set
-            {
-                if (this.gps_indicated_vertical_speed != value)
-                {
-                    this.gps_indicated_vertical_speed = value;
-                    this.NotifyPropertyChanged("Gps_Indicated_Vertical_Speed");
-                }
-            }
-        }
-        private double gps_indicated_ground_speed_kt;
-        public double Gps_Indicated_Ground_Speed_Kt {
-            get { return this.gps_indicated_ground_speed_kt; }
-            set
-            {
-                if (this.gps_indicated_ground_speed_kt != value)
-                {
-                    this.gps_indicated_ground_speed_kt = value;
-                    this.NotifyPropertyChanged("ps_Indicated_Ground_Speed_Kt");
-                }
-            }
-        }
-        private double airspeed_indicator_indicated_speed_kt;
-        public double Airspeed_Indicator_Indicated_Speed_Kt {
-            get { return this.airspeed_indicator_indicated_speed_kt; }
-            set
-            {
-                if (this.airspeed_indicator_indicated_speed_kt != value)
-                {
-                    this.airspeed_indicator_indicated_speed_kt = value;
-                    this.NotifyPropertyChanged("Airspeed_Indicator_Indicated_Speed_Kt");
-                }
-            }
-        }
-
-        private double gps_indicated_altitude_ft;
-        public double Gps_Indicated_Altitude_Ft {
-            get { return this.gps_indicated_altitude_ft; }
-            set
-            {
-                if (this.gps_indicated_altitude_ft != value)
-                {
-                    this.gps_indicated_altitude_ft = value;
-                    this.NotifyPropertyChanged("Gps_Indicated_Altitude_Ft");
-                }
-            }
-        }
-
-        private double attitude_indicator_internal_roll_deg;
-        public double Attitude_Indicator_Internal_Roll_Deg {
-            get { return this.attitude_indicator_internal_roll_deg; }
-            set
-            {
-                if (this.attitude_indicator_internal_roll_deg != value)
-                {
-                    this.attitude_indicator_internal_roll_deg = value;
-                    this.NotifyPropertyChanged("Attitude_Indicator_Internal_Roll_Deg");
-                }
-            }
-        }
-
-
-        private double atitude_indicator_internal_pitch_deg;
-        public double Atitude_Indicator_Internal_Pitch_Deg {
-            get { return this.atitude_indicator_internal_pitch_deg; }
-            set
-            {
-                if (this.atitude_indicator_internal_pitch_deg != value)
-                {
-                    this.atitude_indicator_internal_pitch_deg = value;
-                    this.NotifyPropertyChanged("Atitude_Indicator_Internal_Pitch_Deg");
-                }
-            }
-        }
-
-        private double altimeter_indicated_altitude_ft;
-        public double Altimeter_Indicated_Altitude_Ft {
-            get { return this.altimeter_indicated_altitude_ft; }
-            set
-            {
-                if (this.altimeter_indicated_altitude_ft != value)
-                {
-                    this.altimeter_indicated_altitude_ft = value;
-                    this.NotifyPropertyChanged("Altimeter_Indicated_Altitude_Ft");
-                }
-            }
-        }
-
-        private double position_longitude_deg;
-        public double Position_Longitude_Deg
+        private double vertical_speed;
+        public double Vertical_Speed
         {
-            get { return this.position_longitude_deg; }
+            get { return this.vertical_speed; }
             set
             {
-                if (this.position_longitude_deg != value)
+                if (this.vertical_speed != value)
                 {
-                    this.position_longitude_deg = value;
-                    this.NotifyPropertyChanged("Position_Longitude_Deg");
+                    this.vertical_speed = value;
+                    this.NotifyPropertyChanged("Vertical_Speed");
+                }
+            }
+        }
+        private double ground_speed;
+        public double Ground_Speed
+        {
+            get { return this.ground_speed; }
+            set
+            {
+                if (this.ground_speed != value)
+                {
+                    this.ground_speed = value;
+                    this.NotifyPropertyChanged("Ground_Speed");
                 }
             }
         }
 
-        private double position_latitude_deg;
-        public double Position_Latitude_Deg {
-            get { return this.position_latitude_deg; }
+        private double air_speed;
+        public double Air_Speed
+        {
+            get { return this.air_speed; }
             set
             {
-                if (this.position_latitude_deg != value)
+                if (this.air_speed != value)
                 {
-                    this.position_latitude_deg = value;
-                    this.NotifyPropertyChanged("Position_latitude_deg");
+                    this.air_speed = value;
+                    this.NotifyPropertyChanged("Air_Speed");
                 }
             }
         }
+
+        private double altimeter;
+        public double Altimeter
+        {
+            get { return this.altimeter; }
+            set
+            {
+                if (this.altimeter != value)
+                {
+                    this.altimeter = value;
+                    this.NotifyPropertyChanged("Altimeter");
+                }
+            }
+        }
+
+        private double roll;
+        public double Roll
+        {
+            get { return this.roll; }
+            set
+            {
+                if (this.roll != value)
+                {
+                    this.roll = value;
+                    this.NotifyPropertyChanged("Roll");
+                }
+            }
+        }
+
+
+        private double pitch;
+        public double Pitch
+        {
+            get { return this.pitch; }
+            set
+            {
+                if (this.pitch != value)
+                {
+                    this.pitch = value;
+                    this.NotifyPropertyChanged("Pitch");
+                }
+            }
+        }
+
+        private double altitude;
+        public double Altitude
+        {
+            get { return this.altitude; }
+            set
+            {
+                if (this.altitude != value)
+                {
+                    this.altitude = value;
+                    this.NotifyPropertyChanged("Altitude");
+                }
+            }
+        }
+
+        private double longitude;
+        public double Longitude
+        {
+            get { return this.longitude; }
+            set
+            {
+                if (this.longitude != value)
+                {
+                    this.longitude = value;
+                    this.NotifyPropertyChanged("Longitude");
+                }
+            }
+        }
+
+        private double latitude;
+        public double Latitude
+        {
+            get { return this.latitude; }
+            set
+            {
+                if (this.latitude != value)
+                {
+                    this.latitude = value;
+                    this.NotifyPropertyChanged("Latitude");
+                }
+            }
+        }
+
+        public double Indicated_Heading_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Gps_Indicated_Vertical_Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Gps_Indicated_Ground_Speed_Kt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Airspeed_Indicator_Indicated_Speed_Kt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Gps_Indicated_Altitude_Ft { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Attitude_Indicator_Internal_Roll_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Atitude_Indicator_Internal_Pitch_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Altimeter_Indicated_Altitude_Ft { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Position_Longitude_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Position_Latitude_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
 
         //till here i added all above
@@ -226,9 +248,53 @@ namespace FlightSimulator
             new Thread(delegate () {
                 while (!stop)
                 {
-                    telnetClient.Write("get left sonar");
-                    Rudder = Double.Parse(telnetClient.Read());
-                    // the same for the other sensors properties
+
+                    //get maps values
+
+                    telnetClient.Write("get/position/latitude-deg");
+                    Latitude = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/position/longitude-deg");
+                    Longitude = Double.Parse(telnetClient.Read());
+
+
+                    //get dashboard values
+
+                    telnetClient.Write("get/instrumentation/airspeed-indicator/indicated-speed-kt");
+                    Air_Speed = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/instrumentation/gps/indicated-altitude-ft");
+                    Altitude = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/instrumentation/attitude-indicator/internal-roll-deg");
+                    Roll = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/instrumentation/attitude-indicator/internal-pitch-deg");
+                    Pitch = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/instrumentation/altimeter/indicated-altitude-ft");
+                    Altimeter = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/instrumentation/heading-indicator/indicated-heading-deg");
+                    Heading = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/instrumentation/gps/indicated-ground-speed-kt");
+                    Ground_Speed = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get/instrumentation/gps/indicated-vertical-speed");
+                    Vertical_Speed = Double.Parse(telnetClient.Read());
+
+
+                    //set
+
+                    telnetClient.Write("set/controls/engines/current-engine/throttle");
+
+                    telnetClient.Write("set/controls/flight/aileron");
+
+                    telnetClient.Write("set/controls/flight/elevator");
+
+                    telnetClient.Write("set/controls/flight/rudder");
+
 
                     Thread.Sleep(250);// read the data in 4Hz
                 }
@@ -245,9 +311,5 @@ namespace FlightSimulator
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-
-
-
-
     }
 }

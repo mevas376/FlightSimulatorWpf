@@ -27,28 +27,15 @@ namespace FlightSimulator
             InitializeComponent();
             // vm = new SimulatorViewModel(new SimulatorModel(new MyTelnetClient()));
             // DataContext = vm;
-            client = new MyTelnetClient();
-            client.Connect("127.0.0.1", 8080);
-            Closed +=
-                (o, p) =>
-                {
-                    client.Disconnect();
-                };
+            //client = new MyTelnetClient();
+            //client.Connect("127.0.0.1", 8080);
+            //Closed +=
+            //    (o, p) =>
+            //    {
+            //        client.Disconnect();
+            //    };
         }
 
-        
-
-        private void SendButtonClick(object sender, RoutedEventArgs e)
-        {
-            string s = input.Text;
-            client.Write(s);
-            input.Text = "";
-
-        }
-        private void ReceiveButtonClick(object sender, RoutedEventArgs e)
-        {
-            output.Content = client.Read();
-        }
     }
 }
 
