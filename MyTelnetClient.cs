@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Timers;
 
 namespace FlightSimulator
 {
@@ -12,6 +13,7 @@ namespace FlightSimulator
     {
         Socket socket = null;
         string buffer = "";
+        int prevMilliseconds = 0;
         public void Connect(string ip, ushort port)
         {
             try
@@ -24,7 +26,7 @@ namespace FlightSimulator
 
             catch (Exception e)
             {
-
+                Console.WriteLine("NOT CONNECTED PROPERLY!!!");
                 Console.WriteLine("Unexpected exception : {0}", e.ToString());
 
             }
@@ -33,11 +35,11 @@ namespace FlightSimulator
 
         private string GetLine()
         {
-            var index = buffer.IndexOf("\r\n");
+            var index = buffer.IndexOf("\n");
             if (index != -1)
             {
                 var line = buffer.Substring(0, index);
-                buffer = buffer.Substring(index + 2);
+                buffer = buffer.Substring(index + 1);
                 return line;
             }
             if (!socket.Connected)
@@ -57,10 +59,23 @@ namespace FlightSimulator
             {
                 byte[] currentBuffer = new byte[1024];
                 socket.Receive(currentBuffer);
-                buffer += Encoding.ASCII.GetString(currentBuffer);
+                var str = Encoding.ASCII.GetString(currentBuffer);
+                if (str.IndexOf('\0') != -1)
+                {
+                    str = str.Substring(0, str.IndexOf('\0'));
+                }
+                buffer += str;
                 result = GetLine();
             }
 
+            try
+            {
+                Double.Parse(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(result);
+            }
             return result;
         }
 
@@ -79,17 +94,22 @@ namespace FlightSimulator
             {
                 throw new ArgumentException("Socket was not opened"); // TODO change
             }
+
             return ReadSingleLine();
         }
 
         public void Write(string command)
         {
+            int elapsedTime = DateTime.Now.Millisecond - prevMilliseconds;
+            while (elapsedTime < 10)
+            {
+                System.Threading.Thread.Sleep(10 - elapsedTime);
+            }
             if (socket == null)
             {
                 throw new ArgumentException("Socket was not opened"); // TODO change
             }
             socket.Send(Encoding.ASCII.GetBytes(command));
-            socket.Send(Encoding.ASCII.GetBytes("\r\n"));
         }
     }
 }

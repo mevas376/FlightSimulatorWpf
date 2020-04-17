@@ -21,20 +21,20 @@ namespace FlightSimulator
     public partial class MainWindow : Window
     {
         SimulatorViewModel vm;
-        MyTelnetClient client;
+       
         public MainWindow()
         {
+            Console.WriteLine("startinggg MEVAS ROCKS!!!");
             InitializeComponent();
-            // vm = new SimulatorViewModel(new SimulatorModel(new MyTelnetClient()));
-            // DataContext = vm;
-            //client = new MyTelnetClient();
-            //client.Connect("127.0.0.1", 8080);
-            //Closed +=
-            //    (o, p) =>
-            //    {
-            //        client.Disconnect();
-            //    };
+            SimulatorModel model = new SimulatorModel(new MyTelnetClient());
+            vm = new SimulatorViewModel(model);
+            DataContext = vm;
+            model.connect("127.0.0.1", 5402);
+            model.start();
         }
+        private void Joystick_Loaded(object sender, RoutedEventArgs e) { }
+
+      
 
     }
 }

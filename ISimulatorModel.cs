@@ -17,18 +17,18 @@ namespace FlightSimulator
         double Elevator { set; get; }
         double Aileron { set; get; }
         double Throttle { set; get; }
-        double Indicated_Heading_Deg { set; get; }
-        double Gps_Indicated_Vertical_Speed { set; get; }
-        double Gps_Indicated_Ground_Speed_Kt { set; get; }
-        double Airspeed_Indicator_Indicated_Speed_Kt { set; get; }
-        double Gps_Indicated_Altitude_Ft { set; get; }
-        double Attitude_Indicator_Internal_Roll_Deg { set; get; }
+        double Heading { set; get; }
+        double Vertical_Speed { set; get; }
+        double Ground_Speed { set; get; }
+        double Air_Speed { set; get; }
+        double Altimeter { set; get; }
+        double Roll { set; get; }
 
-        double Atitude_Indicator_Internal_Pitch_Deg { set; get; }
+        double Pitch { set; get; }
 
-        double Altimeter_Indicated_Altitude_Ft { set; get; }
+        double Altitude { set; get; }
 
-        double Position_Longitude_Deg { set; get; }
-        double Position_Latitude_Deg { set; get; }
+        double Longitude { set; get; }
+        double Latitude { set; get; }
     }
 }

@@ -21,7 +21,6 @@ namespace FlightSimulator
             stop = false;
         }
 
-        //from here I added till where i wrote!
         private double rudder;
         public double Rudder
         {
@@ -31,6 +30,8 @@ namespace FlightSimulator
                 if (this.rudder != value)
                 {
                     this.rudder = value;
+                    Console.WriteLine("rudder has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Rudder");
                 }
             }
@@ -45,6 +46,8 @@ namespace FlightSimulator
                 if (this.elevator != value)
                 {
                     this.elevator = value;
+                    Console.WriteLine("elevator has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Elevator");
                 }
             }
@@ -59,6 +62,8 @@ namespace FlightSimulator
                 if (this.aileron != value)
                 {
                     this.aileron = value;
+                    Console.WriteLine("aileron has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Aileron");
                 }
             }
@@ -73,6 +78,8 @@ namespace FlightSimulator
                 if (this.throttle != value)
                 {
                     this.throttle = value;
+                    Console.WriteLine("throttle has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Throttle");
                 }
             }
@@ -87,6 +94,8 @@ namespace FlightSimulator
                 if (this.heading != value)
                 {
                     this.heading = value;
+                    Console.WriteLine("heading has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Heading");
                 }
             }
@@ -100,6 +109,8 @@ namespace FlightSimulator
                 if (this.vertical_speed != value)
                 {
                     this.vertical_speed = value;
+                    Console.WriteLine("vertical_speed has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Vertical_Speed");
                 }
             }
@@ -113,6 +124,7 @@ namespace FlightSimulator
                 if (this.ground_speed != value)
                 {
                     this.ground_speed = value;
+                    Console.WriteLine("ground_speed has been changed in MODEL");
                     this.NotifyPropertyChanged("Ground_Speed");
                 }
             }
@@ -127,6 +139,7 @@ namespace FlightSimulator
                 if (this.air_speed != value)
                 {
                     this.air_speed = value;
+                    Console.WriteLine("Air_Speed has been changed in MODEL");
                     this.NotifyPropertyChanged("Air_Speed");
                 }
             }
@@ -141,6 +154,8 @@ namespace FlightSimulator
                 if (this.altimeter != value)
                 {
                     this.altimeter = value;
+                    Console.WriteLine("Altimeter has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Altimeter");
                 }
             }
@@ -155,6 +170,7 @@ namespace FlightSimulator
                 if (this.roll != value)
                 {
                     this.roll = value;
+                    Console.WriteLine("Roll has been changed in MODEL");
                     this.NotifyPropertyChanged("Roll");
                 }
             }
@@ -170,6 +186,8 @@ namespace FlightSimulator
                 if (this.pitch != value)
                 {
                     this.pitch = value;
+                    Console.WriteLine("Pitch has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Pitch");
                 }
             }
@@ -184,6 +202,8 @@ namespace FlightSimulator
                 if (this.altitude != value)
                 {
                     this.altitude = value;
+                    Console.WriteLine("Altitude has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Altitude");
                 }
             }
@@ -198,6 +218,7 @@ namespace FlightSimulator
                 if (this.longitude != value)
                 {
                     this.longitude = value;
+                    Console.WriteLine("longitude has been changed in MODEL");
                     this.NotifyPropertyChanged("Longitude");
                 }
             }
@@ -212,6 +233,8 @@ namespace FlightSimulator
                 if (this.latitude != value)
                 {
                     this.latitude = value;
+                    Console.WriteLine("Latitude has been changed in MODEL");
+
                     this.NotifyPropertyChanged("Latitude");
                 }
             }
@@ -228,78 +251,22 @@ namespace FlightSimulator
         public double Position_Longitude_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public double Position_Latitude_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-
-        //till here i added all above
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void connect(string ip, ushort port)
         {
-            this.telnetClient.Connect(ip, port);
+            telnetClient.Connect(ip, port);
         }
 
         public void disconnect()
         {
             stop = true;
-            this.telnetClient.Disconnect();
+            telnetClient.Disconnect();
         }
 
-        public void start()
+        private string ToString(double throttle)
         {
-            new Thread(delegate () {
-                while (!stop)
-                {
-
-                    //get maps values
-
-                    telnetClient.Write("get/position/latitude-deg");
-                    Latitude = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/position/longitude-deg");
-                    Longitude = Double.Parse(telnetClient.Read());
-
-
-                    //get dashboard values
-
-                    telnetClient.Write("get/instrumentation/airspeed-indicator/indicated-speed-kt");
-                    Air_Speed = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/instrumentation/gps/indicated-altitude-ft");
-                    Altitude = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/instrumentation/attitude-indicator/internal-roll-deg");
-                    Roll = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/instrumentation/attitude-indicator/internal-pitch-deg");
-                    Pitch = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/instrumentation/altimeter/indicated-altitude-ft");
-                    Altimeter = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/instrumentation/heading-indicator/indicated-heading-deg");
-                    Heading = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/instrumentation/gps/indicated-ground-speed-kt");
-                    Ground_Speed = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("get/instrumentation/gps/indicated-vertical-speed");
-                    Vertical_Speed = Double.Parse(telnetClient.Read());
-
-
-                    //set
-
-                    telnetClient.Write("set/controls/engines/current-engine/throttle");
-
-                    telnetClient.Write("set/controls/flight/aileron");
-
-                    telnetClient.Write("set/controls/flight/elevator");
-
-                    telnetClient.Write("set/controls/flight/rudder");
-
-
-                    Thread.Sleep(250);// read the data in 4Hz
-                }
-            }).Start();
-
+            return Throttle.ToString();
         }
 
         //thats what I added:
@@ -310,6 +277,72 @@ namespace FlightSimulator
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
+        }
+
+        public void start()
+        {
+            new Thread(delegate () {
+                while (!stop)
+                {
+                    //get maps values
+
+                    telnetClient.Write("get /position/latitude-deg\n");
+                    Latitude = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /position/longitude-deg\n");
+                    Longitude = Double.Parse(telnetClient.Read());
+
+
+                    //get dashboard values
+
+                    telnetClient.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
+                    Air_Speed = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /instrumentation/gps/indicated-altitude-ft\n");
+                    Altitude = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n");
+                    Roll = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
+                    Pitch = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /instrumentation/altimeter/indicated-altitude-ft\n");
+                    Altimeter = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n");
+                    Heading = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /instrumentation/gps/indicated-ground-speed-kt\n");
+                    Ground_Speed = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("get /instrumentation/gps/indicated-vertical-speed\n");
+                    Vertical_Speed = Double.Parse(telnetClient.Read());
+
+
+                    //set
+                    //to put in a different method, to be callled only if something has changed.
+
+
+
+                    //NEED TO CHECK WHY HE ASKED ME TO IMPLEMENT A TOSTRING METHOD JUST FOR THROTTLE!!!
+                    //something here is not right...
+                    telnetClient.Write("set /controls/engines/current-engine/throttle " + ToString(Throttle) + "\n");
+                    Throttle = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("set /controls/flight/aileron " + ToString(Aileron) + "\n");
+                    Aileron = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("set /controls/flight/elevator " + ToString(Elevator) + "\n");
+                    Elevator = Double.Parse(telnetClient.Read());
+
+                    telnetClient.Write("set /controls/flight/rudder " + ToString(Rudder) + "\n");
+                    Rudder = Double.Parse(telnetClient.Read());
+
+                    Thread.Sleep(250);// read the data in 4Hz
+                }
+            }).Start();
+
         }
     }
 }

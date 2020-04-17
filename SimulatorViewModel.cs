@@ -19,34 +19,94 @@ namespace FlightSimulator
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
-
-
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyPropertyChanged(string propName) { }
+        public void NotifyPropertyChanged(string propName) 
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
 
         //properties:
-        double VM_Rudder { get { return model.Rudder; } }
+      /*  private double diff;
+        double VM_Diff
+        {
+            set
+            {
+                if (this.diff != value)
 
-        public double VM_Elevator { get { return model.Elevator; } }
-        public double VM_Aileron { get { return model.Aileron; } }
-        public double VM_Throttle { get { return model.Throttle; } }
-        public double VM_Indicated_Heading_Deg { get { return model.Indicated_Heading_Deg; } }
-        public double VM_Gps_Indicated_Vertical_Speed { get { return model.Gps_Indicated_Vertical_Speed; } }
-        public double VM_Gps_Indicated_Ground_Speed_Kt { get { return model.Gps_Indicated_Ground_Speed_Kt; } }
-        public double VM_Airspeed_Indicator_Indicated_Speed_Kt { get { return model.Airspeed_Indicator_Indicated_Speed_Kt; } }
-        public double VM_Gps_Indicated_Altitude_Ft { get { return model.Gps_Indicated_Altitude_Ft; } }
-        public double VM_Attitude_Indicator_Internal_Roll_Deg { get { return model.Attitude_Indicator_Internal_Roll_Deg; } }
+                    this.diff = value;
+            }
+        }*/
 
-        public double VM_Atitude_Indicator_Internal_Pitch_Deg { get { return model.Atitude_Indicator_Internal_Pitch_Deg; } }
+        private double rudder;
+        public double VM_Rudder
+        {
+            set
+            {
+                if (this.rudder != value)
 
-        public double VM_Altimeter_Indicated_Altitude_Ft { get { return model.Altimeter_Indicated_Altitude_Ft; } }
+                    this.rudder = value;
+                this.model.Rudder = value;
+            }
+            get { return model.Rudder; } }
 
-        public double VM_Position_Longitude_Deg { get { return model.Position_Latitude_Deg; } }
-        public double VM_Position_Latitude_Deg { get { return model.Position_Latitude_Deg; } }
 
+
+        private double elevator;
+        public double VM_Elevator
+        {
+            set
+            {
+                if (this.elevator != value)
+
+                    this.elevator = value;
+                this.model.Elevator = value;
+            }
+            get { return model.Elevator; } }
+
+        private double aileron;
+        public double VM_Aileron
+        {
+            set
+            {
+                if (this.aileron != value)
+
+                    this.aileron = value;
+                this.model.Aileron = value;
+            }
+            get { return model.Aileron; } }
+
+        private double throttle;
+        public double VM_Throttle
+        {
+            set
+            {
+                if (this.throttle != value)
+
+                    this.throttle = value;
+                this.model.Throttle = value;
+            }
+            get { return model.Throttle; }
+        }
+
+        public double VM_Heading { get { return model.Heading; } }
+        public double VM_Vertical_Speed { get { return model.Vertical_Speed; } }
+        public double VM_Ground_Speed { get { return model.Ground_Speed; } }
+        public double VM_Air_Speed { get { return model.Air_Speed; } }
+        public double VM_Altimeter { get { return model.Altimeter; } }
+        public double VM_Roll { get { return model.Roll; } }
+
+        public double VM_Pitch { get { return model.Pitch; } }
+
+        public double VM_Altitude { get { return model.Altitude; } }
+
+        public double VM_Longitude { get { return model.Longitude; } }
+        public double VM_Latitude { get { return model.Latitude; } }
 
     }
 }
