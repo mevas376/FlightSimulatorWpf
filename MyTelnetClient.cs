@@ -58,7 +58,15 @@ namespace FlightSimulator
             while (result == null)
             {
                 byte[] currentBuffer = new byte[1024];
-                socket.Receive(currentBuffer);
+                socket.ReceiveTimeout = 2000;
+                try
+                {
+                    socket.Receive(currentBuffer);
+                }
+                catch (TimeoutException e)
+                {
+                    Console.WriteLine(e);
+                }
                 var str = Encoding.ASCII.GetString(currentBuffer);
                 if (str.IndexOf('\0') != -1)
                 {
@@ -66,15 +74,6 @@ namespace FlightSimulator
                 }
                 buffer += str;
                 result = GetLine();
-            }
-
-            try
-            {
-                Double.Parse(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(result);
             }
             return result;
         }
@@ -104,6 +103,7 @@ namespace FlightSimulator
             while (elapsedTime < 10)
             {
                 System.Threading.Thread.Sleep(10 - elapsedTime);
+                elapsedTime = DateTime.Now.Millisecond - prevMilliseconds;
             }
             if (socket == null)
             {

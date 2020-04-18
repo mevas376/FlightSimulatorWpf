@@ -438,13 +438,13 @@
             <DockPanel Grid.Row="0">
                 <!--Joystick properties-->
                 <TextBlock  DockPanel.Dock="Left" Width="180" TextAlignment="Center" FontWeight="Bold"  FontSize="25">Elevator:</TextBlock>
-                <TextBlock DockPanel.Dock="Left" TextAlignment="Center" FontWeight="Bold" FontSize="25" Text="{Binding ElementName=joystick,Path=Elevator,StringFormat=0.00#}"></TextBlock>
-                <TextBlock DockPanel.Dock="Right" TextAlignment="Center" FontWeight="Bold" FontSize="25" Text="{Binding ElementName=joystick,Path=Rudder,StringFormat=0.00#}"></TextBlock>
+                <TextBlock DockPanel.Dock="Left" TextAlignment="Center" FontWeight="Bold" FontSize="25" Text="{Binding ElementName=joystick,Path=Elevator,StringFormat=0.00}"></TextBlock>
+                <TextBlock DockPanel.Dock="Right" TextAlignment="Center" FontWeight="Bold" FontSize="25" Text="{Binding ElementName=joystick,Path=Rudder,StringFormat=0.00}"></TextBlock>
                 <TextBlock  DockPanel.Dock="Right" Width="180" TextAlignment="Center" FontWeight="Bold"  FontSize="25">Rudder:</TextBlock>
 
             </DockPanel>
             <!--END Joystick properties-->
-            <views:Joystick Grid.Row="1" x:Name="joystick"  Rudder="{Binding VM_Rudder, Mode=OneWayToSource}" Elevator="{Binding VM_Elevator,Mode=OneWayToSource}">
+            <views:Joystick Grid.Row="1" x:Name="joystick"  Rudder="{Binding VM_Rudder, Mode=OneWayToSource}" Elevator="{Binding VM_Elevator,Mode=OneWayToSource}" Loaded="joystick_Loaded">
 
             </views:Joystick>
         </Grid>

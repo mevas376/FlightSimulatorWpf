@@ -4,56 +4,54 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.Views"
-             mc:Ignorable="d" d:DesignWidth="800" Height="372.472">
+             mc:Ignorable="d" d:DesignWidth="800" Height="430">
     <Grid Background="BlanchedAlmond">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="46*"/>
-            <RowDefinition Height="0*"/>
-
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.RowSpan="2">
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond"><Run Text="Air Speed"/></TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Text="{Binding Path=VM_Air_Speed ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.RowSpan="2">
+        <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond">Altitude</TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Text="{Binding Path=VM_Altitude ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="1" Grid.Column="0">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" HorizontalAlignment="Left" Width="400">Roll</TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Text="{Binding Path=VM_Roll ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="2">
+        <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond">Pitch</TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Text="{Binding Path=VM_Pitch ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="3">
+        <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond">Altimeter</TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Text="{Binding Path=VM_Altimeter ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1">
+        <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond">Heading</TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Text="{Binding Path=VM_Heading ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Margin="0,0,0,25">
+        <StackPanel Grid.Row="3" Grid.Column="0">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond">Ground Speed</TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Text="{Binding Path=VM_Ground_Speed ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="1">
+        <StackPanel Grid.Row="3" Grid.Column="1">
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond">Vertical Speed</TextBlock>
             <TextBlock Background="Gray" TextAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="BlanchedAlmond" Height="33" Text="{Binding Path=VM_Vertical_Speed ,StringFormat=0.00#}"></TextBlock>
         </StackPanel>

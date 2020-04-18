@@ -24,5 +24,10 @@ namespace FlightSimulatorApp.Views
         {
             InitializeComponent();
         }
+
+        private void joystick_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

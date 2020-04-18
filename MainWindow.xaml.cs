@@ -34,8 +34,12 @@ namespace FlightSimulator
         }
         private void Joystick_Loaded(object sender, RoutedEventArgs e) { }
 
-      
+        private void Dashboard_Loaded(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void Map_Loaded(object sender, RoutedEventArgs e) { }
     }
 }
 

@@ -30,7 +30,6 @@ namespace FlightSimulator
 
         double Longitude { set; get; }
         double Latitude { set; get; }
-        string Location { set; get; }
         string Error { set; get; }
     }
 }

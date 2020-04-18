@@ -63,9 +63,7 @@ namespace FlightSimulator
         {
             set
             {
-                if (this.elevator != value)
-
-                    this.elevator = value;
+                this.elevator = value;
                 this.model.Elevator = value;
             }
             get { return model.Elevator; }
@@ -108,10 +106,12 @@ namespace FlightSimulator
 
         public double VM_Altitude { get { return model.Altitude; } }
 
-        public double VM_Longitude { get { return model.Longitude; } }
+        public double VM_Longitude { get { return model.Longitude ; } }
         public double VM_Latitude { get { return model.Latitude; } }
 
-        public string VM_Location { get { return model.Location; } }
+        public string VM_Location { get {
+                return string.Format("{0},{1}", VM_Latitude, VM_Longitude); 
+            } }
 
         public string VM_Error { get { return model.Error; } }
 

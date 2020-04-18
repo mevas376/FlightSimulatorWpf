@@ -209,13 +209,9 @@ namespace FlightSimulator
             get { return this.altitude; }
             set
             {
-                if (this.altitude != value)
-                {
-                    this.altitude = value;
-                    Console.WriteLine("Altitude has been changed in MODEL");
+                this.altitude = value;
 
-                    this.NotifyPropertyChanged("Altitude");
-                }
+                this.NotifyPropertyChanged("Altitude");
             }
         }
 
@@ -225,12 +221,11 @@ namespace FlightSimulator
             get { return this.longitude; }
             set
             {
-                if (this.longitude != value)
-                {
-                    this.longitude = value;
-                    Console.WriteLine("longitude has been changed in MODEL");
-                    this.NotifyPropertyChanged("Longitude");
-                }
+                this.longitude = ((value + 180) % 360) - 180;
+
+                this.NotifyPropertyChanged("Longitude");
+                this.NotifyPropertyChanged("Location");
+                this.NotifyPropertyChanged("MapCenter");
             }
         }
 
@@ -240,29 +235,11 @@ namespace FlightSimulator
             get { return this.latitude; }
             set
             {
-                if (this.latitude != value)
-                {
-                    this.latitude = value;
-                    Console.WriteLine("Latitude has been changed in MODEL");
+                this.latitude = ((value + 90) % 180) - 90;
 
-                    this.NotifyPropertyChanged("Latitude");
-                }
-            }
-        }
-
-        private string location;
-        public string Location
-        {
-            get { return this.location; }
-            set
-            {
-                if (this.location != value)
-                {
-                    this.location = value;
-                    Console.WriteLine("Location has been changed in MODEL");
-
-                    this.NotifyPropertyChanged("Location");
-                }
+                this.NotifyPropertyChanged("Location");
+                this.NotifyPropertyChanged("Latitude");
+                this.NotifyPropertyChanged("MapCenter");
             }
         }
 
@@ -351,8 +328,6 @@ namespace FlightSimulator
 
                     telnetClient.Write("get /instrumentation/gps/indicated-vertical-speed\n");
                     Vertical_Speed = Double.Parse(telnetClient.Read());
-
-                    Location = Convert.ToString(latitude + "," + longitude);
 
                     Thread.Sleep(250);// read the data in 4Hz
                 }
