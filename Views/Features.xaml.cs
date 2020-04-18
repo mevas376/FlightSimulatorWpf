@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,9 +26,23 @@ namespace FlightSimulatorApp.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        //connect button
+        private void Connect_Click(object sender, RoutedEventArgs e)
         {
+            //model.connect("127.0.0.1", 5402);
+            //   model.start();
+        }
 
+        //disconnect button
+        private void Disconnect_Click(object sender, RoutedEventArgs e)
+        {
+            //  model.disconnect();
+        }
+
+        // clear logs button
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ErrorsBlock.Text = String.Empty;
         }
     }
 }

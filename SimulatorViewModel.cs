@@ -21,9 +21,9 @@ namespace FlightSimulator
             };
         }
 
-         public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyPropertyChanged(string propName) 
+        public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
             {
@@ -32,16 +32,16 @@ namespace FlightSimulator
         }
 
         //properties:
-      /*  private double diff;
-        double VM_Diff
-        {
-            set
-            {
-                if (this.diff != value)
+        /*  private double diff;
+          double VM_Diff
+          {
+              set
+              {
+                  if (this.diff != value)
 
-                    this.diff = value;
-            }
-        }*/
+                      this.diff = value;
+              }
+          }*/
 
         private double rudder;
         public double VM_Rudder
@@ -53,7 +53,8 @@ namespace FlightSimulator
                     this.rudder = value;
                 this.model.Rudder = value;
             }
-            get { return model.Rudder; } }
+            get { return model.Rudder; }
+        }
 
 
 
@@ -67,7 +68,8 @@ namespace FlightSimulator
                     this.elevator = value;
                 this.model.Elevator = value;
             }
-            get { return model.Elevator; } }
+            get { return model.Elevator; }
+        }
 
         private double aileron;
         public double VM_Aileron
@@ -79,7 +81,8 @@ namespace FlightSimulator
                     this.aileron = value;
                 this.model.Aileron = value;
             }
-            get { return model.Aileron; } }
+            get { return model.Aileron; }
+        }
 
         private double throttle;
         public double VM_Throttle
@@ -107,6 +110,10 @@ namespace FlightSimulator
 
         public double VM_Longitude { get { return model.Longitude; } }
         public double VM_Latitude { get { return model.Latitude; } }
+
+        public string VM_Location { get { return model.Location; } }
+
+        public string VM_Error { get { return model.Error; } }
 
     }
 }

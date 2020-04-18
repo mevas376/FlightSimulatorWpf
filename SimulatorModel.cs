@@ -30,7 +30,8 @@ namespace FlightSimulator
                 if (this.rudder != value)
                 {
                     this.rudder = value;
-                    Console.WriteLine("rudder has been changed in MODEL");
+                    telnetClient.Write("set /controls/flight/rudder " + ToString(value) + "\n");
+                    telnetClient.Read(); // Discard
 
                     this.NotifyPropertyChanged("Rudder");
                 }
@@ -46,6 +47,10 @@ namespace FlightSimulator
                 if (this.elevator != value)
                 {
                     this.elevator = value;
+
+                    telnetClient.Write("set /controls/flight/elevator " + ToString(value) + "\n");
+                    telnetClient.Read();    // Discard
+
                     Console.WriteLine("elevator has been changed in MODEL");
 
                     this.NotifyPropertyChanged("Elevator");
@@ -62,6 +67,10 @@ namespace FlightSimulator
                 if (this.aileron != value)
                 {
                     this.aileron = value;
+
+                    telnetClient.Write("set /controls/flight/aileron " + ToString(value) + "\n");
+                    telnetClient.Read();    // Discard
+
                     Console.WriteLine("aileron has been changed in MODEL");
 
                     this.NotifyPropertyChanged("Aileron");
@@ -77,10 +86,11 @@ namespace FlightSimulator
             {
                 if (this.throttle != value)
                 {
-                    this.throttle = value;
-                    Console.WriteLine("throttle has been changed in MODEL");
+                    throttle = value;
+                    telnetClient.Write("set /controls/engines/current-engine/throttle " + ToString(value) + "\n");
+                    telnetClient.Read();    // Discard
 
-                    this.NotifyPropertyChanged("Throttle");
+                    NotifyPropertyChanged("Throttle");
                 }
             }
         }
@@ -240,16 +250,39 @@ namespace FlightSimulator
             }
         }
 
-        public double Indicated_Heading_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Gps_Indicated_Vertical_Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Gps_Indicated_Ground_Speed_Kt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Airspeed_Indicator_Indicated_Speed_Kt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Gps_Indicated_Altitude_Ft { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Attitude_Indicator_Internal_Roll_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Atitude_Indicator_Internal_Pitch_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Altimeter_Indicated_Altitude_Ft { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Position_Longitude_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Position_Latitude_Deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private string location;
+        public string Location
+        {
+            get { return this.location; }
+            set
+            {
+                if (this.location != value)
+                {
+                    this.location = value;
+                    Console.WriteLine("Location has been changed in MODEL");
+
+                    this.NotifyPropertyChanged("Location");
+                }
+            }
+        }
+
+        private string error;
+        public string Error
+        {
+            get { return this.error; }
+            set
+            {
+                if (this.error != value)
+                {
+                    this.error = value;
+                    Console.WriteLine("Error has been changed in MODEL");
+
+                    this.NotifyPropertyChanged("Error");
+                }
+            }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -319,25 +352,7 @@ namespace FlightSimulator
                     telnetClient.Write("get /instrumentation/gps/indicated-vertical-speed\n");
                     Vertical_Speed = Double.Parse(telnetClient.Read());
 
-
-                    //set
-                    //to put in a different method, to be callled only if something has changed.
-
-
-
-                    //NEED TO CHECK WHY HE ASKED ME TO IMPLEMENT A TOSTRING METHOD JUST FOR THROTTLE!!!
-                    //something here is not right...
-                    telnetClient.Write("set /controls/engines/current-engine/throttle " + ToString(Throttle) + "\n");
-                    Throttle = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("set /controls/flight/aileron " + ToString(Aileron) + "\n");
-                    Aileron = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("set /controls/flight/elevator " + ToString(Elevator) + "\n");
-                    Elevator = Double.Parse(telnetClient.Read());
-
-                    telnetClient.Write("set /controls/flight/rudder " + ToString(Rudder) + "\n");
-                    Rudder = Double.Parse(telnetClient.Read());
+                    Location = Convert.ToString(latitude + "," + longitude);
 
                     Thread.Sleep(250);// read the data in 4Hz
                 }
