@@ -50,8 +50,8 @@ namespace FlightSimulatorApp.Views
             }
         }
 
-        const double toleration = 1.8;
-        const double offset = 1.5;
+        const double toleration = 2.25;
+        const double offset = 1.75;
         public Location VM_MapCenter
         {
             get
@@ -98,12 +98,6 @@ namespace FlightSimulatorApp.Views
         private void MyMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
             stopChanging = true;
-        }
-
-        private void MyMap_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            mapCenterY = VM_Latitude;
-            mapCenterX = VM_Longitude;
         }
     }
 }

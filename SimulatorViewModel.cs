@@ -115,5 +115,25 @@ namespace FlightSimulator
 
         public string VM_Error { get { return model.Error; } }
 
+        public void Connect()
+        {
+            try
+            {
+                this.model.connect("127.0.0.1", 5402);
+
+            }
+            catch
+            {
+
+            }
+            this.model.start();
+
+        }
+
+        public void Disconnect()
+        {
+            this.model.disconnect();
+        }
+
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Timers;
+using System.IO;
 
 namespace FlightSimulator
 {
@@ -24,11 +25,11 @@ namespace FlightSimulator
                 Console.WriteLine("Connection established");
             }
 
-            catch (Exception e)
+            catch (IOException e)
             {
                 Console.WriteLine("NOT CONNECTED PROPERLY!!!");
                 Console.WriteLine("Unexpected exception : {0}", e.ToString());
-
+                throw new IOException("Connection Failed");
             }
 
         }

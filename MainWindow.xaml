@@ -2,29 +2,34 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:views="clr-namespace:FlightSimulatorApp.Views"
-        Title="MainWindow" Height="1250" Width="1250"
+        Title="MainWindow" Height="600" Width="800"
         Background="White"
         >
+    <Window.RenderTransform>
+        <ScaleTransform ScaleX="{Binding ZoomX}" ScaleY="{Binding ZoomY}"/>
+    </Window.RenderTransform>
     <Grid>
-        <Grid.RowDefinitions> <!--Definning the size of the grid-->
-            <RowDefinition Height="0.35*"/>
-            <RowDefinition Height="0.65*"/>
+        <Grid.RowDefinitions>
+            <!--Definning the size of the grid-->
+            <RowDefinition Height="211*"/>
+            <RowDefinition Height="360*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.65*"/>
             <ColumnDefinition Width="0.35*"/>
         </Grid.ColumnDefinitions>
+        <Viewbox Margin="0,0,0,359.667" Grid.RowSpan="2">
+            <views:Dashboard Grid.Column="0" Grid.Row="0" Height="210" Width="520" />
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="1">
+            <views:Steers/>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="0">
+            <views:Map  x:Name="VM_Map" Loaded="Map_Loaded" Height="478"  />
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="0">
+            <views:Features Width="506" />
+        </Viewbox>
 
-        <views:Dashboard Grid.Row="0" Grid.Column="0">
-        </views:Dashboard>
-
-        <views:Steers Grid.Row="1" Grid.Column="1">
-        </views:Steers>
-
-        <views:Map Grid.Column="0" Grid.Row="1" x:Name="VM_Map" Loaded="Map_Loaded">
-        </views:Map>
-
-        <views:Features Grid.Column="1" Grid.Row="0">
-        </views:Features>
     </Grid>
 </Window>

@@ -259,14 +259,21 @@ namespace FlightSimulator
             }
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void connect(string ip, ushort port)
         {
-            telnetClient.Connect(ip, port);
+            try
+            {
+                telnetClient.Connect(ip, port);
+            }
+            catch(IOExeption e)
+            {
+                Error = e.Message;
+            }
+           
         }
+
 
         public void disconnect()
         {
@@ -334,5 +341,7 @@ namespace FlightSimulator
             }).Start();
 
         }
+
+
     }
 }

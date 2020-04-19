@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IOExeption.cs" />
     <Compile Include="ITelnetClient.cs" />
     <Compile Include="SimulatorModel.cs" />
     <Compile Include="SimulatorViewModel.cs" />

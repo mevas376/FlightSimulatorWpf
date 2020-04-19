@@ -29,14 +29,13 @@ namespace FlightSimulatorApp.Views
         //connect button
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
-            //model.connect("127.0.0.1", 5402);
-            //   model.start();
+            (DataContext as SimulatorViewModel).Connect();
         }
 
         //disconnect button
         private void Disconnect_Click(object sender, RoutedEventArgs e)
         {
-            //  model.disconnect();
+            (DataContext as SimulatorViewModel).Disconnect();
         }
 
         // clear logs button

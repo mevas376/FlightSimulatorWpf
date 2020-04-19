@@ -6,9 +6,9 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:local="clr-namespace:FlightSimulatorApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="800">
+             d:DesignHeight="1000" d:DesignWidth="1000">
     <Grid>
-        <m:Map Loaded="MyMap_Loaded_1" MouseUp="MyMap_DragLeave" MouseDown="MyMap_MouseDown" Height="400" Width="800" Center="{Binding Path=VM_MapCenter}" ZoomLevel="4" Name="MyMap" CredentialsProvider=" jhT87dQtc4o60oG4GEDW~-M4_ObLysNZ7Ibqi6f8aLg~Av_t8YrLP5nUr7yFsLMq5Sv-e9HkBiXMBIo3R5k9DkhdN5LxqlQvw7qo0PrANhax">
+        <m:Map MouseUp="MyMap_DragLeave" MouseDown="MyMap_MouseDown" Height="400" Width="800" Center="{Binding Path=VM_Location}" ZoomLevel="4" Name="MyMap" CredentialsProvider=" jhT87dQtc4o60oG4GEDW~-M4_ObLysNZ7Ibqi6f8aLg~Av_t8YrLP5nUr7yFsLMq5Sv-e9HkBiXMBIo3R5k9DkhdN5LxqlQvw7qo0PrANhax">
             <m:Pushpin Location="{Binding Path=VM_Location}" x:Name="pushpin"/>
         </m:Map>
     </Grid>

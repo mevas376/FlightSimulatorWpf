@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.Views" xmlns:views="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
     <UserControl.Resources>
 
         <!--Control colors.-->
@@ -399,11 +399,11 @@
         </Style>
     </UserControl.Resources>
     <Grid> <!-- the external grid-->
-        <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-        <Grid><!--the grid for the sliders-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"><!--the grid for the sliders-->
             
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -429,7 +429,7 @@
 
         </Grid><!--END grid sliders-->
 
-        <Grid Grid.Column="1"><!--JOYSTICK GRID-->
+        <Grid Grid.Row="1"><!--JOYSTICK GRID-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -439,8 +439,8 @@
                 <!--Joystick properties-->
                 <TextBlock  DockPanel.Dock="Left" Width="180" TextAlignment="Center" FontWeight="Bold"  FontSize="25">Elevator:</TextBlock>
                 <TextBlock DockPanel.Dock="Left" TextAlignment="Center" FontWeight="Bold" FontSize="25" Text="{Binding ElementName=joystick,Path=Elevator,StringFormat=0.00}"></TextBlock>
-                <TextBlock DockPanel.Dock="Right" TextAlignment="Center" FontWeight="Bold" FontSize="25" Text="{Binding ElementName=joystick,Path=Rudder,StringFormat=0.00}"></TextBlock>
-                <TextBlock  DockPanel.Dock="Right" Width="180" TextAlignment="Center" FontWeight="Bold"  FontSize="25">Rudder:</TextBlock>
+                <TextBlock  DockPanel.Dock="Left" Width="180" TextAlignment="Center" FontWeight="Bold"  FontSize="25">Rudder:</TextBlock>
+                <TextBlock DockPanel.Dock="Left" TextAlignment="Center" FontWeight="Bold" FontSize="25" Text="{Binding ElementName=joystick,Path=Rudder,StringFormat=0.00}"></TextBlock>
 
             </DockPanel>
             <!--END Joystick properties-->
